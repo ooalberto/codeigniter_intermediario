@@ -23,4 +23,11 @@ class Pages extends CI_Controller
 		$this->load->view('pages/view', ['page' => $page]);
 		$this->load->view('templates/footer');
 	}
+
+	public function insert()
+	{
+		$this->load->view('templates/header');
+		$this->load->view('pages/insert');
+		$this->load->view('templates/footer');
+	}
 }
