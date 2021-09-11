@@ -5,11 +5,11 @@
 		<th>Ações</th>
 	</thead>
 	<tbody>
-		<?php foreach ($pages as $page) : ?>
+	
 			<td><?php echo $page->id ?></td>
 			<td><?php echo $page->title ?></td>
 			<td><input type="button" class="btn btn-sucess" value="acao"></td>
 			<tr>
-		<?php endforeach; ?>
+	
 	</tbody>
 </table>
