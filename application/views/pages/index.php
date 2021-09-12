@@ -1,3 +1,4 @@
+<a href="/pages/insert" value="add"> <input type="button" value="add" class="btn btn-sucess"> </a>
 <table class="table table-hover">
 	<thead>
 		<th>#</th>
@@ -5,11 +6,20 @@
 		<th>Ações</th>
 	</thead>
 	<tbody>
+
 		<?php foreach ($pages as $page) : ?>
 			<td><?php echo $page->id ?></td>
 			<td><?php echo $page->title ?></td>
-			<td><input type="button" class="btn btn-sucess" value="acao"></td>
+			<td class="text-right">
+
+				<!-- <a href="/pages/<?php echo $page->id; ?>" class="btn btn-xs btn-default">ver</a>
+            <a href="/pages/<?php echo $page->id; ?>/edit" class="btn btn-xs btn-info">editar</a>
+            <form action="/pages/<?php echo $page->id; ?>/delete" style="display: inline-block" METHOD="post">
+                <input type="submit" value="remover" class="btn btn-xs btn-danger">
+            </form> -->
+			</td>
+
 			<tr>
-		<?php endforeach; ?>
+			<?php endforeach; ?>
 	</tbody>
 </table>

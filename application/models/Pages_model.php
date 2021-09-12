@@ -15,9 +15,23 @@ class Pages_model extends CI_Model
 		if (empty($id)) {
 			$query = $this->db->get($this->table);
 			return $query->result();
-		}else{
-			$query = $this->db->get_where($this->table,['id'=>$id]);
+		} else {
+			$query = $this->db->get_where($this->table, ['id' => $id]);
 			return $query->first_row();
-		}	
+		}
+	}
+
+	public function insert()
+	{
+		$this->load->helper('url');
+
+		$slug = url_title($this->input->post('title'), '_', true);
+
+		$data = [
+			'title' => $this->input->post('title'),
+			'body' => $this->input->post('body'),
+			'slug' => $slug
+		];
+		return	$this->db->insert('pages', $data);
 	}
 }

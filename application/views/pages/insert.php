@@ -1,4 +1,5 @@
-<form action="pages/insert" method="post">
+<?php echo validation_errors(); ?>
+<form action="insert" method="post">
 	<div class="form-group">
 		<label for="title">Digite o titulo aqui</label>
 		<input type="text" name="title" class="form-control" placeholder="Seu titulo aqui..">
