@@ -11,12 +11,16 @@
 			<td><?php echo $page->id ?></td>
 			<td><?php echo $page->title ?></td>
 			<td class="text-right">
+				<a href="/pages/<?= $page->id ?>">Ver</a> | 
+				<a href="/pages/<?= $page->id ?>/edit">editar</a>
 
-				<!-- <a href="/pages/<?php echo $page->id; ?>" class="btn btn-xs btn-default">ver</a>
-            <a href="/pages/<?php echo $page->id; ?>/edit" class="btn btn-xs btn-info">editar</a>
-            <form action="/pages/<?php echo $page->id; ?>/delete" style="display: inline-block" METHOD="post">
+				<form action="/pages/<?= $page->id; ?>/delete" style="display: inline-blok" METHOD="post">
+				  <input type="submit" value="remover">
+				</form>
+
+				<!-- <form action="/pages/<?php echo $page->id; ?>/delete" style="display: inline-block" METHOD="post">
                 <input type="submit" value="remover" class="btn btn-xs btn-danger">
-            </form> -->
+            </form>  -->
 			</td>
 
 			<tr>
