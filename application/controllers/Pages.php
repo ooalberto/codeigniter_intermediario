@@ -5,7 +5,7 @@ class Pages extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('pages_model');
-		$this->load->helper('url');
+		// $this->load->helper('url');  jogou no autoload C:\Complementos\treinamento\codeigniter_intermediario\codeigniter_intermediario\application\config\autoload.php
 	}
 
 	public function index()
