@@ -62,11 +62,8 @@ class Pages extends CI_Controller
 	}
 	public function delete($id)
 	{
-		$data['back'] ='/pages';
-	return	$this->pages_model->delete($id);
-
-		// $this->load->view('templates/success',$data);
-
-       
+		$data['back'] = '/pages';
+		$this->pages_model->delete($id);
+		$this->load->view('templates/success', $data);
 	}
 }
