@@ -37,6 +37,7 @@ class Pages_model extends CI_Model
 
 
 
+
 	public function update($id)
 	{
 		$this->load->helper('url');

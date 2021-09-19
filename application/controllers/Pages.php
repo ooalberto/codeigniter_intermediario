@@ -5,6 +5,7 @@ class Pages extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('pages_model');
+		$this->load->model('users_model');
 		$this->load->helper('form');
 		// $this->load->helper('url');  jogou no autoload C:\Complementos\treinamento\codeigniter_intermediario\codeigniter_intermediario\application\config\autoload.php
 	}
@@ -72,19 +73,22 @@ class Pages extends CI_Controller
 	public function novo()
 	{
 		$this->load->library('form_validation');
-		$this->form_validation->set_rules('email', 'E-mail', 'required|min_lenght[4]|max_len[100]');
-		$this->form_validation->set_rules('nome', 'Nome', 'required|min_lenght[4]|max_len[100]');
-		$this->form_validation->set_rules('senha', 'Senha', 'required|min_lenght[6]|max_len[100]');
+		$this->form_validation->set_rules('email', 'E-mail', 'required|is_unique[users.email]');
+		// $this->form_validation->set_rules('email', 'E-mail', 'required|min_lenght[4]|max_len[100]|is_unique[user.email]');
+		// $this->form_validation->set_rules('nome', 'Nome', 'required|min_lenght[4]|max_len[100]');
+		// $this->form_validation->set_rules('senha', 'Senha', 'required|min_lenght[6]|max_len[100]');
 
 		if ($this->form_validation->run() === false) {
 
 			$erros = array('msgs' => validation_errors());
 
 			$this->load->view('templates/header');
-			$this->load->view('pages/insert',$erros);
+			$this->load->view('pages/insert', $erros);
 			$this->load->view('templates/footer');
-
 		} else {
+			$data['back'] = '/pages';
+			$this->users_model->insert();
+			$this->load->view('templates/success', $data);
 		}
 	}
 }

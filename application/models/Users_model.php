@@ -38,11 +38,13 @@ class Users_model extends CI_Model
     public function insert()
     {
         $data = [
-            'name' => $this->input->post('name'),
+            'name' => $this->input->post('nome'),
+            // 'senha' => $this->input->post('senha'),
             'email' => $this->input->post('email'),
-            'password' => password_hash($this->input->post('password'), PASSWORD_BCRYPT)
+            'password' => password_hash($this->input->post('senha'), PASSWORD_BCRYPT)
         ];
 
         return $this->db->insert($this->table_name, $data);
     }
 }
+
