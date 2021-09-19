@@ -23,4 +23,10 @@ class Upload2_model extends CI_Model
         }
         $this->db->insert($this->table, $dados);
     }
+
+    public function get()
+    {
+        $query =  $this->db->get($this->table);
+        return $query->result();
+    }
 }

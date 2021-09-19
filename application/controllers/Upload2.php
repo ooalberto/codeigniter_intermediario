@@ -6,19 +6,20 @@ class Upload2 extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('upload2_model');
+		$this->load->library('zip');
 	}
 	public function index()
 	{
 
 		$this->load->view('templates/header');
-		$this->load->view('upload/index');
+		$this->load->view('uploads/index');
 		$this->load->view('templates/footer');
 	}
 
 	public function subir()
 	{
 		$nome = $this->input->post('nome');
-		
+
 		$arquivo = $_FILES['arquivo'];
 		$trim = trim($nome);
 		$config = [
@@ -33,18 +34,26 @@ class Upload2 extends CI_Controller
 
 		if ($this->upload->do_upload('arquivo') == true) {
 
+			$this->zip->add_data('public/upload/' . $config['file_name']);
+			$this->zip->archive('public/upload/' . $config['file_name'] . '.zip');
+
 			$data['back'] = '/pages/';
 
 			$dados = [
 				'nome' => $nome,
 				'arquivo' => $config['file_name'],
-				'zip' => $config['file_name'] . 'zip'
+				'zip' => $config['file_name'] . '.zip'
 			];
 
 			$this->upload2_model->insert($dados);
-			$this->load->view('templates/success', $data);
 
-			echo 'arquivo upado';
+			$files = $this->upload2_model->get();
+
+			$this->load->view('templates/header');
+			$this->load->view('uploads/view', ['files'=>$files]);
+			$this->load->view('templates/footer');
+
+			// echo 'arquivo upado';
 		} else {
 			echo $this->upload->display_errors();
 		}
